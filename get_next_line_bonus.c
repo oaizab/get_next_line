@@ -6,7 +6,7 @@
 /*   By: oaizab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 21:49:26 by oaizab            #+#    #+#             */
-/*   Updated: 2021/12/15 11:57:39 by oaizab           ###   ########.fr       */
+/*   Updated: 2021/12/15 12:10:58 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ static int	ft_hasendl(const char *s)
 
 static char	*ft_get_line(char *str, char *prev, int k)
 {
-	int		k;
 	char	*tmp;
 
 	if (k == -1 || str[0] == '\0')
@@ -52,13 +51,13 @@ static char	*ft_get_line(char *str, char *prev, int k)
 
 char	*get_next_line(int fd)
 {
-	static char	prev[1024][BUFFER_SIZE + 1];
+	static char	prev[10240][BUFFER_SIZE + 1];
 	char		*tmp;
 	char		*str;
 	char		buf[BUFFER_SIZE + 1];
 	int			k;
 
-	if (fd < 0 || fd >= 1024)
+	if (fd < 0 || fd >= 10240)
 		return (NULL);
 	str = ft_strdup(prev[fd]);
 	while (!ft_hasendl(str))
